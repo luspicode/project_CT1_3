@@ -1,5 +1,7 @@
 import subprocess
 import os
+from utils import nama_barang, jumlah_barang, harga_barang
+from edit_harga_dan_stok import edit_harga, edit_stok
 
 def clear():
     subprocess.run(
@@ -13,10 +15,9 @@ def menu_owner():
     print("|", "="*50, "|")
     print("|", " "*19 ,"Pilih Menu: ", " "*17 ,"|")
     print("|", "="*50, "|")
-    print("|", "1. Tambah Barang", " "*33, "|")
-    print("|", "2. Hapus Barang", " "*34, "|")
-    print("|", "3. Edit Harga", " "*36, "|")
-    print("|", "0. ", " "*43, "|")
+    print("|", "1. Edit Harga", " "*36, "|")
+    print("|", "2. Edit Stok", " "*37, "|")
+    print("|", "0. Kembali", " "*39, "|")
     print("|", "="*50, "|")
     
     temp = input("Masukkan Pilihan: ")
@@ -26,7 +27,10 @@ def menu_owner():
         return
     
     elif temp == "1":
-        pass
+        edit_harga()
+
+    elif temp == "2":
+        edit_stok()
     
     else:
         pass

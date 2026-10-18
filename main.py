@@ -1,7 +1,9 @@
 from owner import menu_owner
 from customer import menu_customer
+from utils import nama_barang, jumlah_barang, harga_barang
 import subprocess
 import os
+
 
 def clear():
     subprocess.run(
