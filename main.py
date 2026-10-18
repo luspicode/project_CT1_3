@@ -1,4 +1,5 @@
 from owner import menu_owner
+from customer import menu_customer
 import subprocess
 import os
 
@@ -26,5 +27,7 @@ while True:
         break
     elif temp == "1":
         menu_owner()
+    else:
+        menu_customer()
 
 print("Vending Machine Dimatikan...")
