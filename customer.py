@@ -3,12 +3,10 @@ import os
 from utils import nama_barang, jumlah_barang, harga_barang
 
 def clear():
-    subprocess.run(
-        'cls' if os.name == 'nt' else 'clear',shell=True)
-
-clear()
+    subprocess.run('cls' if os.name == 'nt' else 'clear',shell=True)
 
 def menu_customer():
+    clear()
     print("|", "="*50, "|")
     print("|", " "*8 ,"Selamat Datang Di Vending Machine", " "*7 ,"|")
     print("|", "="*50, "|")
