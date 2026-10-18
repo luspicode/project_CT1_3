@@ -1,14 +1,14 @@
 import subprocess
 import os
+import time
 from utils import nama_barang, jumlah_barang, harga_barang
 
 def clear():
     subprocess.run(
         'cls' if os.name == 'nt' else 'clear',shell=True)
 
-clear()
-
 def edit_harga():
+    clear()
     print("|", "="*50, "|")
     print("|", " "*8 ,"Selamat Datang Di Vending Machine", " "*7 ,"|")
     print("|", "="*50, "|")
@@ -23,9 +23,12 @@ def edit_harga():
     harga_baru = int(input("Masukkan harga baru: "))
     harga_barang[temp] = harga_baru
     print(f"Harga {nama_barang[temp]} diubah menjadi Rp{harga_barang[temp]}!")
+    time.sleep(1.5)
+    clear()
     return
 
 def edit_stok():
+    clear()
     print("|", "="*50, "|")
     print("|", " "*8 ,"Selamat Datang Di Vending Machine", " "*7 ,"|")
     print("|", "="*50, "|")
@@ -40,4 +43,6 @@ def edit_stok():
     stok_baru = int(input("Masukkan stok baru: "))
     jumlah_barang[temp] = stok_baru
     print(f"Stok {nama_barang[temp]} diubah menjadi {jumlah_barang[temp]}!")
+    time.sleep(1.5)
+    clear()
     return
