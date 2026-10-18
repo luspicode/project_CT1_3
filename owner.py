@@ -7,9 +7,8 @@ def clear():
     subprocess.run(
         'cls' if os.name == 'nt' else 'clear',shell=True)
 
-clear()
-
 def menu_owner():
+    clear()
     print("|", "="*50, "|")
     print("|", " "*8 ,"Selamat Datang Di Vending Machine", " "*7 ,"|")
     print("|", "="*50, "|")
