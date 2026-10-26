@@ -1,6 +1,46 @@
+import time
+
 nama_barang = ["SUKRO", "POCKY CHOCOLATE", "NISSIN CUP NOODLES", "FLORIDINA", "BIG THUNDER", "YOU C1000 ORANGE WATER", "YOU C1000 LEMON WATER", "TEH BOTOL", "TWISTER", "ULTRAMILK PLAIN", "CHIC CHOC", "LARUTAN CAP BADAK", "SARI KACANG HIJAU", "POCARI SWEAT","MIZONE"]
-jumlah_barang = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+stok_barang = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 harga_barang = [10900, 9500, 8500, 3500, 9000, 9000, 9000, 4500, 8000, 8400, 11500, 8900, 5900, 8800, 6500]
+keranjang = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+total_harga = 0
+
+def lihat_keranjang():
+    print("Isi Keranjang: ")
+    total_harga = 0
+    for i in range(len(keranjang)):
+        if keranjang[i] > 0:
+            print(f"{keranjang[i]} buah {nama_barang[i]} = Rp{keranjang[i] * harga_barang[i]}")
+            total_harga += keranjang[i] * harga_barang[i]
+    print(f"Total Harga = Rp{total_harga}")
+    return
+
+def kosongkan_keranjang():
+    for i in range(len(keranjang)):
+        keranjang[i] = 0
+    return
+
+def reset_keranjang():
+    for i in range(len(keranjang)):
+        stok_barang[i] += keranjang[i]
+        keranjang[i] = 0
+    return
+
+def Pembayaran():
+    print(f"Anda akan membayar: ")
+    lihat_keranjang()
+
+    konfirmasi = input("Masukkan (Y) jika sudah dan (N) jika tidak jadi membeli: ")
+    if konfirmasi == "y" or konfirmasi == "Y":
+        print("Pembayaran Berhasil!")
+        print(f"Silakan ambil barang Anda. Terima kasih!")
+        kosongkan_keranjang()
+        reset_keranjang()
+        return
+    else:
+        print("Pembayaran dibatalkan. Kembali ke menu utama...") 
+        return
 
 def Output_Data_Item():
     print("|", "="*50, "|")
@@ -9,38 +49,60 @@ def Output_Data_Item():
     print("|", " "*19 ,"Pilih Menu: ", " "*17 ,"|")
     print("|", "="*50, "|")
     print("|","Kode - Daftar Barang - Harga - Stok:", " "*13 ,"|")
-    panjang_tulisan = len(f"{i+1} - {nama_barang[i]} - Rp{harga_barang[i]} - {jumlah_barang[i]} pcs ")
     for i in range(len(nama_barang)):
-        print("|", f"{i+1} - {nama_barang[i]} - Rp{harga_barang[i]} - {jumlah_barang[i]} pcs", " "*(50-panjang_tulisan), "|")
-    print("|", "0 - Kembali", " "*38, "|")
+        print("|", f"{i+1} - {nama_barang[i]} - Rp{harga_barang[i]} - {stok_barang[i]} pcs")
+    print("|", "0 - Lihat Keranjang")
+    print("|", "00 - Reset Keranjang")
+    print("|", "000 - Pembayaran")
     print("|", "="*50, "|")
+    return
 
 def menu_customer():
     Output_Data_Item()
 
-    temp = int(input("Masukkan Nomor Barang: "))
-    
-    if temp == 0:
-        print("Keluar dari owner...")
+    temp = str(input("Masukkan Nomor Barang: "))
+
+    if temp == "0":
+        if sum(keranjang) == 0:
+            print("Keranjang kosong.")
+            time.sleep(1.5)
+            return
+        lihat_keranjang()
+        time.sleep(1.5)
         return
+
+    if temp == "00":
+        reset_keranjang()
+        print("Keranjang telah direset.")
+        time.sleep(1.5)
+        return
+
+    if temp == "000":
+        if sum(keranjang) == 0:
+            print("Keranjang kosong, silakan isi terlebih dahulu.")
+            time.sleep(1.5)
+            return
+        else:
+            Pembayaran()
+            time.sleep(2)
+            return
+
+    jumlah_barang = int(input("Masukkan Jumlah Barang: "))
     
     for i in range(len(nama_barang)):
-        if temp == i+1:
-            if jumlah_barang[i] <= 0:
-                print("Maaf, stok barang habis.")
+        if int(temp) == i+1:
+            if stok_barang[i] <= jumlah_barang:
+                print("Maaf, stok barang kurang.")
+                time.sleep(1.5)
                 return
             else: 
-                print(f"Anda sudah membayar 1 buah {nama_barang[i]} dengan harga Rp{harga_barang[i]} melalui QR berikut?")
-                konfirmasi = input("Masukkan (Y) jika sudah dan (N) jika tidak jadi membeli: ")
-                if konfirmasi == "y" or konfirmasi == "Y":
-                    jumlah_barang[i] -= 1
-                    print("Pembayaran Berhasil!")
-                    print(f"Silakan ambil {nama_barang[i]} Anda. Terima kasih!")
-                    return
-                else:
-                    print("Pembayaran dibatalkan. Kembali ke menu utama...") 
-                    return
+                stok_barang[i] -= jumlah_barang
+                keranjang[i] += jumlah_barang
+                print(f"Berhasil menambahkan {jumlah_barang} buah {nama_barang[i]} ke keranjang.")
+                time.sleep(1.5)
+                return
     print("Barang tidak ditemukan!, coba lagi")
+    time.sleep(1.5)
     return
 
 while True:
