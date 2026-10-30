@@ -60,24 +60,24 @@ def Output_Data_Item():
 def menu_customer():
     Output_Data_Item()
 
-    temp = str(input("Masukkan Nomor Barang: "))
+    choice = str(input("Masukkan Nomor Barang: "))
 
-    if temp == "0":
+    if choice == "0":
         if sum(keranjang) == 0:
             print("Keranjang kosong.")
             time.sleep(1.5)
             return
         lihat_keranjang()
-        time.sleep(1.5)
+        konfirmasi = input("Klink Enter untuk kembali" )
         return
 
-    if temp == "00":
+    if choice == "00":
         reset_keranjang()
         print("Keranjang telah direset.")
         time.sleep(1.5)
         return
 
-    if temp == "000":
+    if choice == "000":
         if sum(keranjang) == 0:
             print("Keranjang kosong, silakan isi terlebih dahulu.")
             time.sleep(1.5)
@@ -90,7 +90,7 @@ def menu_customer():
     jumlah_barang = int(input("Masukkan Jumlah Barang: "))
     
     for i in range(len(nama_barang)):
-        if int(temp) == i+1:
+        if int(choice) == i+1:
             if stok_barang[i] <= jumlah_barang:
                 print("Maaf, stok barang kurang.")
                 time.sleep(1.5)
