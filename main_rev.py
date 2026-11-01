@@ -68,7 +68,7 @@ def menu_customer():
             time.sleep(1.5)
             return
         lihat_keranjang()
-        konfirmasi = input("Klink Enter untuk kembali" )
+        konfirmasi = input("Klik Enter untuk kembali" )
         return
 
     if choice == "00":
