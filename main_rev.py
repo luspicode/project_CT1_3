@@ -48,12 +48,12 @@ def Output_Data_Item():
     print("|", "="*50, "|")
     print("|", " "*19 ,"Pilih Menu: ", " "*17 ,"|")
     print("|", "="*50, "|")
-    print("|","Kode - Daftar Barang - Harga - Stok:", " "*13 ,"|")
+    print("|","Kode - Daftar Barang          - Harga      - Stok:","|")
     for i in range(len(nama_barang)):
-        print("|", f"{i+1} - {nama_barang[i]} - Rp{harga_barang[i]} - {stok_barang[i]} pcs")
-    print("|", "0 - Lihat Keranjang")
-    print("|", "00 - Reset Keranjang")
-    print("|", "000 - Pembayaran")
+        print("|", f"{i+1:<4} - {nama_barang[i]:<22} - Rp{harga_barang[i]:<7} - {stok_barang[i]} pcs |" )
+    print("|", "0    - Lihat Keranjang", " "*27, "|")
+    print("|", "00   - Reset Keranjang", " "*27, "|")
+    print("|", "000  - Pembayaran"," "*32, "|")
     print("|", "="*50, "|")
     return
 
@@ -108,4 +108,4 @@ def menu_customer():
 while True:
     menu_customer()
 
-print("Vending Machine Dimatikan...")
+
