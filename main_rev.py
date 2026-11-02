@@ -1,3 +1,26 @@
+# Tugas Besar Berpikir Komputasional
+# TOPIK    : Vending Machine GKU 1 ITB Kampus Jatinagor
+# Kelompok : 3
+
+# Anggota Kelompok 3
+# 1. Luthfi Krishna Haryadi
+# 2. Kenzie Filho Asyhari
+# 3. Kiagus Muhammad Akmal Abdullah
+# 4. Kevin Narenda Ananta Putra
+# 5. Haziel Owen Thaddeus Haryanto
+# 6. Khanda Nicholas Barendra Al Habib Ratu Majid
+# 7. Arula Aswangga Azhar
+
+# Kamus:
+# nama_barang = array STRING
+# stok_barang = array INTEGER
+# harga_barang = array INTEGER
+# keranjang = array INTEGER
+# total_harga = INTEGER
+# konfirmasi = STRING
+# choice = STRING
+
+
 import time
 
 nama_barang = ["SUKRO", "POCKY CHOCOLATE", "NISSIN CUP NOODLES", "FLORIDINA", "BIG THUNDER", "YOU C1000 ORANGE WATER", "YOU C1000 LEMON WATER", "TEH BOTOL", "TWISTER", "ULTRAMILK PLAIN", "CHIC CHOC", "LARUTAN CAP BADAK", "SARI KACANG HIJAU", "POCARI SWEAT","MIZONE"]
